@@ -47,14 +47,13 @@ guide =guide$`NC_010554.1 Proteus mirabilis HI4320, complete sequence`
 
 print ("loaded guide genome")
 
-
-
-guide
-
+#guide
 
 
 
-########### Build a for loop ############
+###########################################################################
+########### Operate sliding window over guide genome in for loop ##########
+###########################################################################
 
 querysize=100
 
