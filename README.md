@@ -1,7 +1,7 @@
 # PCR_Marker_Finder
 This is the pipeline used to find suitable PCR marker genes for the Proteus genus. It is a bit hacky and slow, so you may want to refine it if you reuse it.
 
-##Dependencies
+## Dependencies
 It relies on several dependencies that are not installed from CRAN
 -R devtools
 -BLAST+ software: https://www.ncbi.nlm.nih.gov/books/NBK52637/
@@ -10,7 +10,7 @@ It relies on several dependencies that are not installed from CRAN
 
 
 
-##Creating a database
+## Creating a database
 Place all the the genomes you want to use 
 
 
@@ -18,7 +18,7 @@ Place all the the genomes you want to use
 
 
 
-###Genomes used for the Proteus genus for this study
+### Genomes used for the Proteus genus for this study
 -Proteus mirabilis HI4320: GCF_000069965.1_ASM6996v1_genomic
 -Proteus vulgaris strain ATCC 49132: GCF_000754995.1_PVA_genomic
 -Proteus myxofaciens ATCC 19692: GCF_001654855.1_Cmy19692_DRAFTv1_genomic
