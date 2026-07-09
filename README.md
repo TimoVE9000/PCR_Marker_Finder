@@ -12,19 +12,20 @@ This programme relies on several dependencies
 
 
 ## Creating a database
-To create a blast database, place all the relevant genomes (in fasta format) in the same folder as the main R script. Once the script runs, it will concatinate all the genomes into a single fasta file (concatenated.fasta).
-Then, it will use this fasta file to build a blast database.
+To create a blast database, place all the relevant genomes in fasta format (in my case 8 Proteus genomes, see list below) in the same folder as the main R script. Once the script runs, it will concatinate all the genomes into a single fasta file (concatenated.fasta).
+Then, it will use this fasta file to build a blast database. 
 
 ## Run the sliding window analysis
-Next, the code will 
-
+Next a single one of the genomes is selected as a "guide genome". This genome is blasted against the previously created database in 100bp chunks. 
+For each chunk the following is saved as a line in a file csv (resuts.csv): Position (Pos), Mean percentage similarity of hits with query (Sim), Nr of blast hits (Nrhit), Logical variable  if all of the original genomes are represented in the results (All_strains)
+This process might take a very long time depending on the size of the guide genome. 
 
 
 
 
 
 ### Genomes used for the Proteus genus for in this study
-- Proteus mirabilis HI4320: GCF_000069965.1_ASM6996v1_genomic
+- Proteus mirabilis HI4320: GCF_000069965.1_ASM6996v1_genomic (guide genome)
 - Proteus vulgaris strain ATCC 49132: GCF_000754995.1_PVA_genomic
 - Proteus myxofaciens ATCC 19692: GCF_001654855.1_Cmy19692_DRAFTv1_genomic
 - Proteus columbae strain 08MAS2615: GCF_002777965.1_ASM277796v1_genomic
