@@ -18,14 +18,19 @@ Then, it will use this fasta file to build a blast database.
 ## Run the sliding window analysis
 Next a single one of the genomes is selected as a "guide genome". This genome is blasted against the previously created database in 100bp chunks. 
 For each chunk the following is saved as a line in a file csv (resuts.csv): Position (Pos), Mean percentage similarity of hits with query (Sim), Nr of blast hits (Nrhit), Logical variable  if all of the original genomes are represented in the results (All_strains)
-This process might take a very long time depending on the size of the guide genome. 
+This process might take a very long time depending on the size of the guide genome, consider running on HPC if available.
 
-
+## Analysis of results
+For the analysis you first select an aproximate desired amplicon size, this needs to be a multiple of 100bp (due to the 100bp chuncks in the previous step), in this case we used 900 bp (this works well with current Sanger sequencing pipelines).
+Now for each possible amplicon, three scores are calculated:
+- Con_primer_score: how conserved the 100bp chunks at the end and beginning of the amplicon, where the primers should bind are in the set of species
+- Div_center_score: how divergent the middle of the amplicon is between the different species in the database (i.e. not counting the 100bp chunks at both ends)
+Next the results are sorted for a maximal combined score (Con_primer_score/Div_center_score), thereby optimizing for an amplicon with a divergent center (i.e. very different between species to discrimnate them) and conserved ends (so that primers will consistently bind regardless in all species). To view the resulting amplicions, the "Seg_start_pos", "Seg_end_pos" can be used, as they indicate the location of the amplicon in the guide genome. Simply look up the guide genome in NCBI (in this case the associated genbank nr is AM942759.1), go to change region shown, go to selected region, enter these numbers, then click "fasta" to view the amplicion or graphics to see which gene is being amplified. Use this to manually select candidate amplicons. 
 
 
 
 ### Genomes used for the Proteus genus for in this study
-- Proteus mirabilis HI4320: GCF_000069965.1_ASM6996v1_genomic (guide genome)
+- Proteus mirabilis HI4320: GCF_000069965.1_ASM6996v1_genomic (guide genome, chromosome only!)
 - Proteus vulgaris strain ATCC 49132: GCF_000754995.1_PVA_genomic
 - Proteus myxofaciens ATCC 19692: GCF_001654855.1_Cmy19692_DRAFTv1_genomic
 - Proteus columbae strain 08MAS2615: GCF_002777965.1_ASM277796v1_genomic
