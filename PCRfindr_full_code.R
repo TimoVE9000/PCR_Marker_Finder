@@ -1,11 +1,9 @@
 
-install.packages("devtools")
-devtools::install_github("mhahsler/rBLAST")
-BiocManager::install("BSgenome")
+#install.packages("devtools")
+#devtools::install_github("mhahsler/rBLAST")
+#BiocManager::install("BSgenome")
 
-
-
-#######Load library
+#######Load libraries #########
 library(rBLAST)
 library (seqinr)
 library (EnvNJ)
@@ -88,15 +86,12 @@ i=i+querysize
 
 
 
-#################################################################################
-
-#analsys of results new
-
+#############################################################
+#############Initial analysis of results optional############
+#############################################################
 amplicon_size=900
 top_nr=200
 filename="results.csv"
-
-
 
 data=read.csv(filename, header=F)
 colnames(data)=c("Pos", "Sim", "Nrhit", "All_strains")
@@ -141,24 +136,14 @@ results = results [order (results$combined_score, decreasing=T),]
 
 results$rank=1:length(results$Segnr)
 
-
-
-
-
-
 result_contig=guide[results$Seg_start_pos[1]:results$Seg_end_pos[1]]
 result_contig=toString(DNAStringSet(result_contig))
 
 
 
-
-
+##################################################
+######### Definitive analysis of results##########
 ######### New analysis 2 #########################
-
-
-
-
-#################################################################################
 
 
 amplicon_size=900
@@ -187,11 +172,7 @@ for (i in 1:(length (data$Pos)-amplicon_segnr)){
     con_primer_score=  mean (c(prim1,prim2))
     
     
-    
-
-    
     div_center_score = mean (data [(i+1):(i+amplicon_segnr-2),2], na.rm=T)
-    
     
     
     results=rbind (results, c(i, data$Pos[i], data$Pos[i+amplicon_segnr-1]+querysize-1, prim1, prim2, con_primer_score, div_center_score))
@@ -209,61 +190,10 @@ colnames(results)=c("Segnr", "Seg_start_pos", "Seg_end_pos", "Primer start", "Pr
 results=subset (results, results$con_primer_score>con_threshold)
 
 
-
-
 results = results [order (results$div_center_score, decreasing=F),]
 
 results$rank=1:length(results$Segnr)
 
 results
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
