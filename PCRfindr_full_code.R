@@ -126,10 +126,11 @@ for (i in 1:(length (data$Pos)-amplicon_segnr)){
 colnames(results)=c("Segnr", "Seg_start_pos", "Seg_end_pos", "Primer start", "Primer end", "con_primer_score", "div_center_score")
 results 
 
+#calculate combined score
 results$combined_score=results$con_primer_score/results$div_center_score
 
 
-#Order results by rank score
+#Rank results by combined score
 results = results [order (results$combined_score, decreasing=T),]
 results$rank=1:length(results$Segnr)
 
