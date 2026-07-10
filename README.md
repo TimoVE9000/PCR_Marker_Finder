@@ -25,12 +25,13 @@ For the analysis you first select an aproximate desired amplicon size, this need
 Now for each possible amplicon, three scores are calculated:
 - Con_primer_score: how conserved the 100bp chunks at the end and beginning of the amplicon, where the primers should bind are in the set of species
 - Div_center_score: how divergent the middle of the amplicon is between the different species in the database (i.e. not counting the 100bp chunks at both ends)
+
 Next the results are sorted for a maximal combined score (Con_primer_score/Div_center_score), thereby optimizing for an amplicon with a divergent center (i.e. very different between species to discrimnate them) and conserved ends (so that primers will consistently bind regardless in all species). To view the resulting amplicions, the "Seg_start_pos", "Seg_end_pos" can be used, as they indicate the location of the amplicon in the guide genome. Simply look up the guide genome in NCBI (in this case the associated genbank nr is AM942759.1), go to change region shown, go to selected region, enter these numbers, then click "fasta" to view the amplicion or graphics to see which gene is being amplified. Use this to manually select candidate amplicons. 
 
 
 
 ### Genomes used for the Proteus genus for in this study
-- Proteus mirabilis HI4320: GCF_000069965.1_ASM6996v1_genomic (guide genome, chromosome only!)
+- Proteus mirabilis HI4320: GCF_000069965.1_ASM6996v1_genomic (used as "guide genome")
 - Proteus vulgaris strain ATCC 49132: GCF_000754995.1_PVA_genomic
 - Proteus myxofaciens ATCC 19692: GCF_001654855.1_Cmy19692_DRAFTv1_genomic
 - Proteus columbae strain 08MAS2615: GCF_002777965.1_ASM277796v1_genomic
