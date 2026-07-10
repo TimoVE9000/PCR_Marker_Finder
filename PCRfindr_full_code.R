@@ -52,7 +52,7 @@ print ("loaded guide genome")
 
 
 ###########################################################################
-########### Operate sliding window over guide genome in for loop ##########
+########### Operate blast of 100bp chunks of guide genome in for loop ##########
 ###########################################################################
 
 querysize=100
@@ -86,8 +86,9 @@ i=i+querysize
 
 
 #############################################################
-#############Initial analysis of results optional############
+############# Analysis of results############
 #############################################################
+querysize=100
 amplicon_size=900
 top_nr=200
 filename="results.csv"
